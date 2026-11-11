@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle fx:id="startingRectangle" arcHeight="5.0" arcWidth="5.0" fill="#248328" height="240.0" layoutX="10.0" layoutY="10.0" stroke="#248328" strokeType="INSIDE" width="50.0" />
+      <Rectangle fx:id="arrivalRectangle" arcHeight="5.0" arcWidth="5.0" fill="#248328" height="240.0" layoutX="740.0" layoutY="10.0" stroke="#248328" strokeType="INSIDE" width="50.0" />
+      <Label fx:id="startingText" alignment="CENTER" layoutX="28.0" layoutY="14.0" prefHeight="227.0" prefWidth="14.0" text="S T A R T I N G" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="arrivalText" alignment="CENTER" layoutX="757.0" layoutY="17.0" prefHeight="227.0" prefWidth="14.0" text="A R R I V A L" textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Bold" size="20.0" />
+         </font>
+      </Label>
+      <Rectangle fx:id="roadRectangle" arcHeight="5.0" arcWidth="5.0" fill="#434751" height="240.0" layoutX="65.0" layoutY="10.0" stroke="#434751" strokeType="INSIDE" width="670.0" />
+      <Line endX="130.0" endY="63.0" startX="85.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="130.0" endY="125.0" startX="85.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="130.0" endY="187.0" startX="85.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="195.0" endY="63.0" startX="150.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="195.0" endY="125.0" startX="150.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="195.0" endY="187.0" startX="150.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="260.0" endY="63.0" startX="215.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="260.0" endY="125.0" startX="215.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="260.0" endY="187.0" startX="215.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="325.0" endY="63.0" startX="280.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="325.0" endY="125.0" startX="280.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="325.0" endY="187.0" startX="280.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="390.0" endY="63.0" startX="345.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="390.0" endY="125.0" startX="345.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="390.0" endY="187.0" startX="345.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="455.0" endY="63.0" startX="410.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="455.0" endY="125.0" startX="410.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="455.0" endY="187.0" startX="410.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="520.0" endY="63.0" startX="475.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="520.0" endY="125.0" startX="475.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="520.0" endY="187.0" startX="475.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="585.0" endY="63.0" startX="540.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="585.0" endY="125.0" startX="540.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="585.0" endY="187.0" startX="540.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="650.0" endY="63.0" startX="605.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="650.0" endY="125.0" startX="605.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="650.0" endY="187.0" startX="605.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="715.0" endY="63.0" startX="670.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="715.0" endY="125.0" startX="670.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
+      <Line endX="715.0" endY="187.0" startX="670.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
+   </children>
+</Pane>
