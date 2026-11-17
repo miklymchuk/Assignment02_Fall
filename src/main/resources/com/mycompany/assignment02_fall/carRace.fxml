@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.assignment02_fall.carRaceController">
    <children>
       <Rectangle fx:id="startingRectangle" arcHeight="5.0" arcWidth="5.0" fill="#248328" height="240.0" layoutX="10.0" layoutY="10.0" stroke="#248328" strokeType="INSIDE" width="50.0" />
       <Rectangle fx:id="arrivalRectangle" arcHeight="5.0" arcWidth="5.0" fill="#248328" height="240.0" layoutX="740.0" layoutY="10.0" stroke="#248328" strokeType="INSIDE" width="50.0" />
@@ -79,7 +79,7 @@
                   <Font name="Calibri Bold" size="14.0" />
                </font>
             </Label>
-            <Slider fx:id="simulationSpeedSlider" blockIncrement="0.5" majorTickUnit="0.5" max="3.0" min="0.5" minorTickCount="0" value="1.0" />
+            <Slider fx:id="simulationSpeedSlider" blockIncrement="0.5" majorTickUnit="0.5" max="3.0" min="0.5" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
             <Label fx:id="simulationSpeed" text="1.0x">
                <font>
                   <Font name="Calibri Bold" size="14.0" />
@@ -105,47 +105,55 @@
       </Label>
       <Polygon fx:id="blueCarFrame" fill="DODGERBLUE" layoutX="120.0" layoutY="11.0" points="-50.0, 39.0, 86.0, 39.0, 71.0, 19.0, 47.0, 19.0, 32.0, 3.0, -6.0, 3.0, -21.0, 19.0, -39.0, 19.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="blueCarWindows" fill="#b6dcff" layoutX="299.0" layoutY="24.0" points="-189.0, 5.0, -143.0, 5.0, -150.0, -3.0, -182.0, -3.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="blueCarBackWheel" layoutX="103.0" layoutY="50.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="blueCarFrontWheel" layoutX="174.0" layoutY="50.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="blueCarBackWheel" fill="#575757" layoutX="103.0" layoutY="50.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="blueCarFrontWheel" fill="#575757" layoutX="174.0" layoutY="50.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
       <Rectangle fx:id="blueCarNumberRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="14.0" layoutX="122.0" layoutY="33.0" stroke="WHITE" strokeType="INSIDE" width="30.0" />
       <Label fx:id="blueCarNumber" layoutX="128.0" layoutY="32.0" text="67">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font>
       </Label>
-      <Line fx:id="blueCarWindowEdge" endX="-106.0" endY="-388.0" layoutX="239.0" layoutY="416.0" startX="-106.0" startY="-394.0" />
+      <Line fx:id="blueCarWindowEdge" endY="6.0" layoutX="133.0" layoutY="22.0" />
       <Polygon fx:id="redCarFrame" fill="RED" layoutX="120.0" layoutY="69.0" points="-50.0, 39.0, 86.0, 39.0, 71.0, 19.0, 47.0, 19.0, 32.0, 3.0, -6.0, 3.0, -21.0, 19.0, -39.0, 19.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="redCarWindows" fill="#b6dcff" layoutX="299.0" layoutY="82.0" points="-189.0, 5.0, -143.0, 5.0, -150.0, -3.0, -182.0, -3.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="redCarBackWheel" layoutX="103.0" layoutY="108.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="redCarFrontWheel" layoutX="174.0" layoutY="108.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="redCarBackWheel" fill="#575757" layoutX="103.0" layoutY="108.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="redCarFrontWheel" fill="#575757" layoutX="174.0" layoutY="108.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
       <Rectangle fx:id="redCarNumberRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="14.0" layoutX="122.0" layoutY="91.0" stroke="WHITE" strokeType="INSIDE" width="30.0" />
       <Label fx:id="redCarNumber" layoutX="128.0" layoutY="90.0" text="11">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font>
       </Label>
-      <Line fx:id="redCarWindowEdge" endX="-106.0" endY="-388.0" layoutX="239.0" layoutY="474.0" startX="-106.0" startY="-394.0" />
+      <Line fx:id="redCarWindowEdge" endY="6.0" layoutX="133.0" layoutY="80.0" />
       <Polygon fx:id="greenCarFrame" fill="#2fff00" layoutX="120.0" layoutY="128.0" points="-50.0, 39.0, 86.0, 39.0, 71.0, 19.0, 47.0, 19.0, 32.0, 3.0, -6.0, 3.0, -21.0, 19.0, -39.0, 19.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="greenCarWindows" fill="#b6dcff" layoutX="299.0" layoutY="141.0" points="-189.0, 5.0, -143.0, 5.0, -150.0, -3.0, -182.0, -3.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="greenCarBackWheel" layoutX="103.0" layoutY="167.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="greenCarFrontWheel" layoutX="174.0" layoutY="167.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="greenCarBackWheel" fill="#575757" layoutX="103.0" layoutY="167.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="greenCarFrontWheel" fill="#575757" layoutX="174.0" layoutY="167.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
       <Rectangle fx:id="greenCarNumberRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="14.0" layoutX="122.0" layoutY="150.0" stroke="WHITE" strokeType="INSIDE" width="30.0" />
       <Label fx:id="greenCarNumber" layoutX="128.0" layoutY="149.0" text="99">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font>
       </Label>
-      <Line fx:id="greenCarWindowEdge" endX="-106.0" endY="-388.0" layoutX="239.0" layoutY="533.0" startX="-106.0" startY="-394.0" />
+      <Line fx:id="greenCarWindowEdge" endY="6.0" layoutX="133.0" layoutY="139.0" />
       <Polygon fx:id="yellowCarFrame" fill="#f6ff00" layoutX="120.0" layoutY="192.0" points="-50.0, 39.0, 86.0, 39.0, 71.0, 19.0, 47.0, 19.0, 32.0, 3.0, -6.0, 3.0, -21.0, 19.0, -39.0, 19.0" stroke="BLACK" strokeType="INSIDE" />
       <Polygon fx:id="yellowCarWindows" fill="#b6dcff" layoutX="299.0" layoutY="205.0" points="-189.0, 5.0, -143.0, 5.0, -150.0, -3.0, -182.0, -3.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="yellowCarBackWheel" layoutX="103.0" layoutY="231.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
-      <Circle fx:id="yellowCarFrontWheel" layoutX="174.0" layoutY="231.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+      <Circle fx:id="yellowCarBackWheel" fill="#575757" layoutX="103.0" layoutY="231.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fx:id="yellowCarFrontWheel" fill="#575757" layoutX="174.0" layoutY="231.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
       <Rectangle fx:id="yellowCarNumberRectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="14.0" layoutX="122.0" layoutY="214.0" stroke="WHITE" strokeType="INSIDE" width="30.0" />
       <Label fx:id="yellowCarNumber" layoutX="128.0" layoutY="213.0" text="08">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font>
       </Label>
-      <Line fx:id="yellowCarWindowEdge" endX="-106.0" endY="-388.0" layoutX="239.0" layoutY="597.0" startX="-106.0" startY="-394.0" />
+      <Line fx:id="yellowCarWindowEdge" endY="6.0" layoutX="133.0" layoutY="203.0" />
+      <Line fx:id="blueCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="50.0" />
+      <Line fx:id="blueCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="50.0" />
+      <Line fx:id="redCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="108.0" />
+      <Line fx:id="redCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="108.0" />
+      <Line fx:id="greenCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="167.0" />
+      <Line fx:id="greenCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="167.0" />
+      <Line fx:id="yellowCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="230.0" />
+      <Line fx:id="yellowCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="230.0" />
    </children>
 </Pane>

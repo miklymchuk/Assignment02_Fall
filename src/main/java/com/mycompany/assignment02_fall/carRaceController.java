@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -152,9 +153,33 @@ public class carRaceController implements Initializable {
     @FXML
     private Polygon yellowCarWindows;
     
+    @FXML
+    private Line blueCarBackWheelRotation;
+    
+    @FXML
+    private Line blueCarFrontWheelRotation;
+    
+    @FXML
+    private Line redCarBackWheelRotation;
+    
+    @FXML
+    private Line redCarFrontWheelRotation;
+    
+    @FXML
+    private Line greenCarBackWheelRotation;
+    
+    @FXML
+    private Line greenCarFrontWheelRotation;
+    
+    @FXML
+    private Line yellowCarBackWheelRotation;
+    
+    @FXML
+    private Line yellowCarFrontWheelRotation;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        simulationSpeed.textProperty().bind(simulationSpeedSlider.valueProperty().asString("%.1f x")); 
+        simulationSpeed.textProperty().bind(simulationSpeedSlider.valueProperty().asString("%.2fx")); 
         simulationSpeedSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             
         });
