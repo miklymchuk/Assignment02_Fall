@@ -2,8 +2,13 @@ package com.mycompany.assignment02_fall;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.animation.Interpolator;
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -15,6 +20,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 
 public class carRaceController implements Initializable {
 
@@ -177,11 +183,69 @@ public class carRaceController implements Initializable {
     @FXML
     private Line yellowCarFrontWheelRotation;
     
+    @FXML
+    private Group blueCar;
+    
+    @FXML
+    private Group redCar;
+    
+    @FXML
+    private Group greenCar;
+    
+    @FXML
+    private Group yellowCar;
+    
+    TranslateTransition blueCarTranslating;
+    
+    RotateTransition blueCarBackWheelRotating;
+    
+    RotateTransition blueCarFrontWheelRotating;
+    
+    ParallelTransition blueCarRacing;
+    
+    private carRaceModel carRace = new carRaceModel();
+    
+    @FXML
+    private void OnStartButtonPressed() {
+        carRace.setBlueCarSpeed();
+        carRace.setRedCarSpeed();
+        carRace.setGreenCarSpeed();
+        carRace.setYellowCarSpeed();
+        
+        Duration blueCarDuration = Duration.millis(25200 / (carRace.getBlueCarSpeed() * simulationSpeedSlider.getValue()));
+        
+        blueCarTranslating.setDuration(blueCarDuration);
+        blueCarBackWheelRotating.setDuration(blueCarDuration);
+        blueCarFrontWheelRotating.setDuration(blueCarDuration);
+        blueCarRacing.play();
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         simulationSpeed.textProperty().bind(simulationSpeedSlider.valueProperty().asString("%.2fx")); 
         simulationSpeedSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             
-        });
+        });  
+        
+        blueCar.getChildren().addAll(blueCarFrame, blueCarBackWheel, blueCarFrontWheel, blueCarWindows, blueCarWindowEdge, blueCarNumberRectangle, blueCarNumber, blueCarBackWheelRotation, blueCarFrontWheelRotation);
+        blueCarBackWheelRotation.toFront();
+        blueCarFrontWheelRotation.toFront();
+        
+        blueCarTranslating = new TranslateTransition(Duration.ZERO, blueCar);
+        blueCarTranslating.setFromX(0);
+        blueCarTranslating.setToX(530);
+        blueCarTranslating.setInterpolator(Interpolator.LINEAR);
+        
+        blueCarBackWheelRotating = new RotateTransition(Duration.ZERO, blueCarBackWheelRotation);
+        blueCarBackWheelRotating.setFromAngle(0);
+        blueCarBackWheelRotating.setByAngle(6073.2);
+        blueCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+        
+        blueCarFrontWheelRotating = new RotateTransition(Duration.ZERO, blueCarFrontWheelRotation);
+        blueCarFrontWheelRotating.setFromAngle(0);
+        blueCarFrontWheelRotating.setByAngle(6073.2);
+        blueCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        
+        blueCarRacing = new ParallelTransition(blueCarTranslating, blueCarBackWheelRotating, blueCarFrontWheelRotating);
     }
 }

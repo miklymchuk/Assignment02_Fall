@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -57,7 +58,7 @@
       <Line endX="715.0" endY="63.0" startX="670.0" startY="63.0" stroke="WHITE" strokeWidth="2.0" />
       <Line endX="715.0" endY="125.0" startX="670.0" startY="125.0" stroke="WHITE" strokeWidth="2.0" />
       <Line endX="715.0" endY="187.0" startX="670.0" startY="187.0" stroke="WHITE" strokeWidth="2.0" />
-      <Button fx:id="startBtn" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: GREEN;" text="Start" textFill="WHITE">
+      <Button fx:id="startBtn" layoutX="10.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnStartButtonPressed" prefWidth="80.0" style="-fx-background-color: GREEN;" text="Start" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
@@ -147,13 +148,17 @@
          </font>
       </Label>
       <Line fx:id="yellowCarWindowEdge" endY="6.0" layoutX="133.0" layoutY="203.0" />
-      <Line fx:id="blueCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="50.0" />
-      <Line fx:id="blueCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="50.0" />
-      <Line fx:id="redCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="108.0" />
-      <Line fx:id="redCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="108.0" />
-      <Line fx:id="greenCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="167.0" />
-      <Line fx:id="greenCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="167.0" />
-      <Line fx:id="yellowCarBackWheelRotation" endY="9.0" layoutX="103.0" layoutY="230.0" />
-      <Line fx:id="yellowCarFrontWheelRotation" endY="9.0" layoutX="174.0" layoutY="230.0" />
+      <Line fx:id="blueCarBackWheelRotation" endY="18.0" layoutX="103.0" layoutY="41.0" />
+      <Line fx:id="blueCarFrontWheelRotation" endY="18.0" layoutX="174.0" layoutY="41.0" />
+      <Line fx:id="redCarBackWheelRotation" endY="18.0" layoutX="103.0" layoutY="99.0" />
+      <Line fx:id="redCarFrontWheelRotation" endY="18.0" layoutX="174.0" layoutY="99.0" />
+      <Line fx:id="greenCarBackWheelRotation" endY="18.0" layoutX="103.0" layoutY="158.0" />
+      <Line fx:id="greenCarFrontWheelRotation" endY="18.0" layoutX="174.0" layoutY="158.0" />
+      <Line fx:id="yellowCarBackWheelRotation" endY="18.0" layoutX="103.0" layoutY="221.0" />
+      <Line fx:id="yellowCarFrontWheelRotation" endY="18.0" layoutX="174.0" layoutY="221.0" />
+      <Group fx:id="blueCar" />
+      <Group fx:id="redCar" />
+      <Group fx:id="greenCar" />
+      <Group fx:id="yellowCar" />
    </children>
 </Pane>
