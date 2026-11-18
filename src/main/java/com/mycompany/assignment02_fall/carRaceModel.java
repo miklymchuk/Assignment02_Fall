@@ -42,11 +42,43 @@ public class carRaceModel {
     public String yellowCarColour = "Yellow";  
     
     public static int setCarSpeed() {
-        return (int) ((Math.random() * 9) + 1);
+        return (int) ((Math.random() * 8) + 2);
     }
 
     public carRaceModel() {
         
+    }
+
+    public String getBlueCarType() {
+        return blueCarType;
+    }
+
+    public String getRedCarType() {
+        return redCarType;
+    }
+
+    public String getGreenCarType() {
+        return greenCarType;
+    }
+
+    public String getYellowCarType() {
+        return yellowCarType;
+    }
+
+    public int getBlueCarNumber() {
+        return blueCarNumber;
+    }
+
+    public int getRedCarNumber() {
+        return redCarNumber;
+    }
+
+    public int getGreenCarNumber() {
+        return greenCarNumber;
+    }
+
+    public int getYellowCarNumber() {
+        return yellowCarNumber;
     }
 
     public int getBlueCarSpeed() {
@@ -64,6 +96,22 @@ public class carRaceModel {
 
     public int getYellowCarSpeed() {
         return yellowCarSpeed;
+    }
+    
+    public String getBlueCarColour() {
+        return blueCarColour;
+    }
+
+    public String getRedCarColour() {
+        return redCarColour;
+    }
+
+    public String getGreenCarColour() {
+        return greenCarColour;
+    }
+
+    public String getYellowCarColour() {
+        return yellowCarColour;
     }
     
     public void setBlueCarSpeed() {

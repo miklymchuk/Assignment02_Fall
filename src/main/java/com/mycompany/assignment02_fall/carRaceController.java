@@ -2,6 +2,7 @@ package com.mycompany.assignment02_fall;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.animation.Animation.Status.RUNNING;
 import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
@@ -109,7 +110,7 @@ public class carRaceController implements Initializable {
     private Button resetBtn;
 
     @FXML
-    private ListView<?> resultsListView;
+    private ListView<String> resultsListView;
 
     @FXML
     private Rectangle roadRectangle;
@@ -201,23 +202,78 @@ public class carRaceController implements Initializable {
     
     RotateTransition blueCarFrontWheelRotating;
     
-    ParallelTransition blueCarRacing;
+    TranslateTransition redCarTranslating;
+    
+    RotateTransition redCarBackWheelRotating;
+    
+    RotateTransition redCarFrontWheelRotating;
+    
+    TranslateTransition greenCarTranslating;
+    
+    RotateTransition greenCarBackWheelRotating;
+    
+    RotateTransition greenCarFrontWheelRotating;
+    
+    TranslateTransition yellowCarTranslating;
+    
+    RotateTransition yellowCarBackWheelRotating;
+    
+    RotateTransition yellowCarFrontWheelRotating;
+    
+    ParallelTransition carsRacing;
+    
+    Duration blueCarDuration;
+    
+    Duration redCarDuration;
+    
+    Duration greenCarDuration;
+    
+    Duration yellowCarDuration;
     
     private carRaceModel carRace = new carRaceModel();
     
     @FXML
     private void OnStartButtonPressed() {
+        if (carsRacing.getStatus() == RUNNING) {
+            return;
+        }
+        
+        int resultsSize = resultsListView.getItems().size();
+        
+        for (int i = 0; i < resultsSize; i++) {
+            resultsListView.getItems().remove(0);
+        }
+        
+        raceWinnerLabel.setText("");
+        raceStatusLabel.setText("Race in progress!");
+        
         carRace.setBlueCarSpeed();
         carRace.setRedCarSpeed();
         carRace.setGreenCarSpeed();
         carRace.setYellowCarSpeed();
         
-        Duration blueCarDuration = Duration.millis(25200 / (carRace.getBlueCarSpeed() * simulationSpeedSlider.getValue()));
+        blueCarDuration = Duration.millis(25200 / (carRace.getBlueCarSpeed() * simulationSpeedSlider.getValue()));
+        redCarDuration = Duration.millis(25200 / (carRace.getRedCarSpeed() * simulationSpeedSlider.getValue()));
+        greenCarDuration = Duration.millis(25200 / (carRace.getGreenCarSpeed() * simulationSpeedSlider.getValue()));
+        yellowCarDuration = Duration.millis(25200 / (carRace.getYellowCarSpeed() * simulationSpeedSlider.getValue()));
         
         blueCarTranslating.setDuration(blueCarDuration);
         blueCarBackWheelRotating.setDuration(blueCarDuration);
         blueCarFrontWheelRotating.setDuration(blueCarDuration);
-        blueCarRacing.play();
+        
+        redCarTranslating.setDuration(redCarDuration);
+        redCarBackWheelRotating.setDuration(redCarDuration);
+        redCarFrontWheelRotating.setDuration(redCarDuration);
+        
+        greenCarTranslating.setDuration(greenCarDuration);
+        greenCarBackWheelRotating.setDuration(greenCarDuration);
+        greenCarFrontWheelRotating.setDuration(greenCarDuration);
+
+        yellowCarTranslating.setDuration(yellowCarDuration);
+        yellowCarBackWheelRotating.setDuration(yellowCarDuration);
+        yellowCarFrontWheelRotating.setDuration(yellowCarDuration);
+
+        carsRacing.play();
     }
     
     @Override
@@ -246,6 +302,142 @@ public class carRaceController implements Initializable {
         blueCarFrontWheelRotating.setByAngle(6073.2);
         blueCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
         
-        blueCarRacing = new ParallelTransition(blueCarTranslating, blueCarBackWheelRotating, blueCarFrontWheelRotating);
+        redCar.getChildren().addAll(redCarFrame, redCarBackWheel, redCarFrontWheel, redCarWindows, redCarWindowEdge, redCarNumberRectangle, redCarNumber, redCarBackWheelRotation, redCarFrontWheelRotation);
+        redCarBackWheelRotation.toFront();
+        redCarFrontWheelRotation.toFront();
+
+        redCarTranslating = new TranslateTransition(Duration.ZERO, redCar);
+        redCarTranslating.setFromX(0);
+        redCarTranslating.setToX(530);
+        redCarTranslating.setInterpolator(Interpolator.LINEAR);
+
+        redCarBackWheelRotating = new RotateTransition(Duration.ZERO, redCarBackWheelRotation);
+        redCarBackWheelRotating.setFromAngle(0);
+        redCarBackWheelRotating.setByAngle(6073.2);
+        redCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+
+        redCarFrontWheelRotating = new RotateTransition(Duration.ZERO, redCarFrontWheelRotation);
+        redCarFrontWheelRotating.setFromAngle(0);
+        redCarFrontWheelRotating.setByAngle(6073.2);
+        redCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        
+        greenCar.getChildren().addAll(greenCarFrame, greenCarBackWheel, greenCarFrontWheel, greenCarWindows, greenCarWindowEdge, greenCarNumberRectangle, greenCarNumber, greenCarBackWheelRotation, greenCarFrontWheelRotation);
+        greenCarBackWheelRotation.toFront();
+        greenCarFrontWheelRotation.toFront();
+
+        greenCarTranslating = new TranslateTransition(Duration.ZERO, greenCar);
+        greenCarTranslating.setFromX(0);
+        greenCarTranslating.setToX(530);
+        greenCarTranslating.setInterpolator(Interpolator.LINEAR);
+
+        greenCarBackWheelRotating = new RotateTransition(Duration.ZERO, greenCarBackWheelRotation);
+        greenCarBackWheelRotating.setFromAngle(0);
+        greenCarBackWheelRotating.setByAngle(6073.2);
+        greenCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+
+        greenCarFrontWheelRotating = new RotateTransition(Duration.ZERO, greenCarFrontWheelRotation);
+        greenCarFrontWheelRotating.setFromAngle(0);
+        greenCarFrontWheelRotating.setByAngle(6073.2);
+        greenCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        
+        yellowCar.getChildren().addAll(yellowCarFrame, yellowCarBackWheel, yellowCarFrontWheel, yellowCarWindows, yellowCarWindowEdge, yellowCarNumberRectangle, yellowCarNumber, yellowCarBackWheelRotation, yellowCarFrontWheelRotation);
+        yellowCarBackWheelRotation.toFront();
+        yellowCarFrontWheelRotation.toFront();
+
+        yellowCarTranslating = new TranslateTransition(Duration.ZERO, yellowCar);
+        yellowCarTranslating.setFromX(0);
+        yellowCarTranslating.setToX(530);
+        yellowCarTranslating.setInterpolator(Interpolator.LINEAR);
+
+        yellowCarBackWheelRotating = new RotateTransition(Duration.ZERO, yellowCarBackWheelRotation);
+        yellowCarBackWheelRotating.setFromAngle(0);
+        yellowCarBackWheelRotating.setByAngle(6073.2);
+        yellowCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+
+        yellowCarFrontWheelRotating = new RotateTransition(Duration.ZERO, yellowCarFrontWheelRotation);
+        yellowCarFrontWheelRotating.setFromAngle(0);
+        yellowCarFrontWheelRotating.setByAngle(6073.2);
+        yellowCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+         
+        carsRacing = new ParallelTransition(blueCarTranslating, blueCarBackWheelRotating, blueCarFrontWheelRotating, 
+                redCarTranslating, redCarBackWheelRotating, redCarFrontWheelRotating, 
+                greenCarTranslating, greenCarBackWheelRotating, greenCarFrontWheelRotating, 
+                yellowCarTranslating, yellowCarBackWheelRotating, yellowCarFrontWheelRotating);
+        
+        blueCar.translateXProperty().addListener(cl -> {
+            if (blueCarTranslating.getCurrentTime().toString().equals(blueCarDuration.toString())) {
+                int placement = resultsListView.getItems().size() + 1;
+                
+                switch (placement) {
+                    case 1: {resultsListView.getItems().add(carRace.getBlueCarType() + " #" + carRace.getBlueCarNumber() + " (" + carRace.getBlueCarColour() + ")                   1st");
+                    finalResultsLabel.setText("Final Results:");
+                    raceWinnerLabel.setText("Congratulations! " + carRace.getBlueCarType() + " #" + carRace.getBlueCarNumber() + " (" + carRace.getBlueCarColour() + ") is the winner!");    
+                    raceStatusLabel.setText("One car finished the race!");} break;
+                    case 2: {resultsListView.getItems().add(carRace.getBlueCarType() + " #" + carRace.getBlueCarNumber() + " (" + carRace.getBlueCarColour() + ")                   2nd");
+                    raceStatusLabel.setText("Two cars finished the race!");} break;
+                    case 3: {resultsListView.getItems().add(carRace.getBlueCarType() + " #" + carRace.getBlueCarNumber() + " (" + carRace.getBlueCarColour() + ")                   3rd");
+                    raceStatusLabel.setText("Three cars finished the race!");} break;
+                    default: {resultsListView.getItems().add(carRace.getBlueCarType() + " #" + carRace.getBlueCarNumber() + " (" + carRace.getBlueCarColour() + ")                   4th");
+                    raceStatusLabel.setText("The race is completed!");}
+                }
+            }
+        });
+        
+        redCar.translateXProperty().addListener(cl -> {
+            if (redCarTranslating.getCurrentTime().toString().equals(redCarDuration.toString())) {
+                int placement = resultsListView.getItems().size() + 1;
+                
+                switch (placement) {
+                    case 1: {resultsListView.getItems().add(carRace.getRedCarType() + " #" + carRace.getRedCarNumber() + " (" + carRace.getRedCarColour() + ")         1st");
+                    finalResultsLabel.setText("Final Results:");
+                    raceWinnerLabel.setText("Congratulations! " + carRace.getRedCarType() + " #" + carRace.getRedCarNumber() + " (" + carRace.getRedCarColour() + ") is the winner!");    
+                    raceStatusLabel.setText("One car finished the race!");} break;
+                    case 2: {resultsListView.getItems().add(carRace.getRedCarType() + " #" + carRace.getRedCarNumber() + " (" + carRace.getRedCarColour() + ")         2nd");
+                    raceStatusLabel.setText("Two cars finished the race!");} break;
+                    case 3: {resultsListView.getItems().add(carRace.getRedCarType() + " #" + carRace.getRedCarNumber() + " (" + carRace.getRedCarColour() + ")         3rd");
+                    raceStatusLabel.setText("Three cars finished the race!");} break;
+                    default: {resultsListView.getItems().add(carRace.getRedCarType() + " #" + carRace.getRedCarNumber() + " (" + carRace.getRedCarColour() + ")         4th");
+                    raceStatusLabel.setText("The race is completed!");}
+                }
+            }
+        });
+        
+        greenCar.translateXProperty().addListener(cl -> {
+            if (greenCarTranslating.getCurrentTime().toString().equals(greenCarDuration.toString())) {
+                int placement = resultsListView.getItems().size() + 1;
+                
+                switch (placement) {
+                    case 1: {resultsListView.getItems().add(carRace.getGreenCarType() + " #" + carRace.getGreenCarNumber() + " (" + carRace.getGreenCarColour() + ")               1st");
+                    finalResultsLabel.setText("Final Results:");
+                    raceWinnerLabel.setText("Congratulations! " + carRace.getGreenCarType() + " #" + carRace.getGreenCarNumber() + " (" + carRace.getGreenCarColour() + ") is the winner!");    
+                    raceStatusLabel.setText("One car finished the race!");} break;
+                    case 2: {resultsListView.getItems().add(carRace.getGreenCarType() + " #" + carRace.getGreenCarNumber() + " (" + carRace.getGreenCarColour() + ")               2nd");
+                    raceStatusLabel.setText("Two cars finished the race!");} break;
+                    case 3: {resultsListView.getItems().add(carRace.getGreenCarType() + " #" + carRace.getGreenCarNumber() + " (" + carRace.getGreenCarColour() + ")               3rd");
+                    raceStatusLabel.setText("Three cars finished the race!");} break;
+                    default: {resultsListView.getItems().add(carRace.getGreenCarType() + " #" + carRace.getGreenCarNumber() + " (" + carRace.getGreenCarColour() + ")               4th");
+                    raceStatusLabel.setText("The race is completed!");}
+                }
+            }
+        });
+        
+        yellowCar.translateXProperty().addListener(cl -> {
+            if (yellowCarTranslating.getCurrentTime().toString().equals(yellowCarDuration.toString())) {
+                int placement = resultsListView.getItems().size() + 1;
+                
+                switch (placement) {
+                    case 1: {resultsListView.getItems().add(carRace.getYellowCarType() + " #" + carRace.getYellowCarNumber() + " (" + carRace.getYellowCarColour() + ")              1st");
+                    finalResultsLabel.setText("Final Results:");
+                    raceWinnerLabel.setText("Congratulations! " + carRace.getYellowCarType() + " #" + carRace.getYellowCarNumber() + " (" + carRace.getYellowCarColour() + ") is the winner!");    
+                    raceStatusLabel.setText("One car finished the race!");} break;
+                    case 2: {resultsListView.getItems().add(carRace.getYellowCarType() + " #" + carRace.getYellowCarNumber() + " (" + carRace.getYellowCarColour() + ")              2nd");
+                    raceStatusLabel.setText("Two cars finished the race!");} break;
+                    case 3: {resultsListView.getItems().add(carRace.getYellowCarType() + " #" + carRace.getYellowCarNumber() + " (" + carRace.getYellowCarColour() + ")              3rd");
+                    raceStatusLabel.setText("Three cars finished the race!");} break;
+                    default: {resultsListView.getItems().add(carRace.getYellowCarType() + " #" + carRace.getYellowCarNumber() + " (" + carRace.getYellowCarColour() + ")              4th");
+                    raceStatusLabel.setText("The race is completed!");}
+                }
+            }
+        });
     }
 }
