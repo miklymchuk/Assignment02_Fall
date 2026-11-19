@@ -41,6 +41,8 @@ public class carRaceModel {
     public int yellowCarSpeed = 0;
     public String yellowCarColour = "Yellow";  
     
+    // Chooses a random integer speed from 2 to 10
+    
     public static int setCarSpeed() {
         return (int) ((Math.random() * 8) + 2);
     }
@@ -85,7 +87,6 @@ public class carRaceModel {
         return blueCarSpeed;
     }
 
-    
     public int getRedCarSpeed() {
         return redCarSpeed;
     }
@@ -93,7 +94,7 @@ public class carRaceModel {
     public int getGreenCarSpeed() {
         return greenCarSpeed;
     }
-
+    
     public int getYellowCarSpeed() {
         return yellowCarSpeed;
     }
@@ -113,6 +114,8 @@ public class carRaceModel {
     public String getYellowCarColour() {
         return yellowCarColour;
     }
+    
+    // Different compared to usual setters, since the car speed will always be random
     
     public void setBlueCarSpeed() {
         this.blueCarSpeed = setCarSpeed();

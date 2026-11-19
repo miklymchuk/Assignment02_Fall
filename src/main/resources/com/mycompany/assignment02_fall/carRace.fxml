@@ -63,12 +63,12 @@
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="pauseBtn" layoutX="100.0" layoutY="260.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: BLUE;" text="Pause" textFill="WHITE">
+      <Button fx:id="pauseBtn" alignment="CENTER" layoutX="100.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnPauseButtonPressed" prefHeight="37.0" prefWidth="80.0" style="-fx-background-color: BLUE;" text="Pause" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="resetBtn" layoutX="190.0" layoutY="260.0" mnemonicParsing="false" prefWidth="80.0" style="-fx-background-color: RED;" text="Reset" textFill="WHITE">
+      <Button fx:id="resetBtn" layoutX="190.0" layoutY="260.0" mnemonicParsing="false" onAction="#OnResetButtonPressed" prefWidth="80.0" style="-fx-background-color: RED;" text="Reset" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>

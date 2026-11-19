@@ -2,6 +2,7 @@ package com.mycompany.assignment02_fall;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import static javafx.animation.Animation.Status.PAUSED;
 import static javafx.animation.Animation.Status.RUNNING;
 import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
@@ -230,13 +231,17 @@ public class carRaceController implements Initializable {
     
     Duration yellowCarDuration;
     
+    Boolean carRacePaused;
+    
     private carRaceModel carRace = new carRaceModel();
     
     @FXML
     private void OnStartButtonPressed() {
-        if (carsRacing.getStatus() == RUNNING) {
+        if (carsRacing.getStatus() == RUNNING || carsRacing.getStatus() == PAUSED) {
             return;
         }
+        
+        carRacePaused = false;
         
         int resultsSize = resultsListView.getItems().size();
         
@@ -276,12 +281,59 @@ public class carRaceController implements Initializable {
         carsRacing.play();
     }
     
+    @FXML
+    private void OnPauseButtonPressed() {
+        if (carsRacing.getStatus() == RUNNING || carsRacing.getStatus() == PAUSED) {
+            if (carRacePaused == false) {
+                carsRacing.pause();
+                raceStatusLabel.setText("The race is paused!");
+                pauseBtn.setText("Resume");
+                pauseBtn.setStyle("-fx-background-color: blue; -fx-font: bold 17px 'Calibri';");
+                carRacePaused = true;
+            } else {
+                carsRacing.playFrom(carsRacing.getCurrentTime());
+                raceStatusLabel.setText("Race in progress!");
+                pauseBtn.setText("Pause");
+                pauseBtn.setStyle("-fx-background-color: blue; -fx-font: bold 20px 'Calibri';");
+                carRacePaused = false;
+            }
+        }
+    }
+    
+    @FXML
+    private void OnResetButtonPressed() {
+        carsRacing.stop();
+        
+        if (carRacePaused == true) {
+            raceStatusLabel.setText("Race in progress!");
+            pauseBtn.setText("Pause");
+            pauseBtn.setStyle("-fx-background-color: blue; -fx-font: bold 20px 'Calibri';");
+            carRacePaused = false;
+        }
+        
+        blueCar.setTranslateX(0);
+        redCar.setTranslateX(0);
+        greenCar.setTranslateX(0);
+        yellowCar.setTranslateX(0);
+        
+        int resultsSize = resultsListView.getItems().size();
+        
+        for (int i = 0; i < resultsSize; i++) {
+            resultsListView.getItems().remove(0);
+        }
+        
+        raceWinnerLabel.setText("");
+        raceStatusLabel.setText("The race hasn't started yet!");
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         simulationSpeed.textProperty().bind(simulationSpeedSlider.valueProperty().asString("%.2fx")); 
         simulationSpeedSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
             
         });  
+        
+        carRacePaused = true;
         
         blueCar.getChildren().addAll(blueCarFrame, blueCarBackWheel, blueCarFrontWheel, blueCarWindows, blueCarWindowEdge, blueCarNumberRectangle, blueCarNumber, blueCarBackWheelRotation, blueCarFrontWheelRotation);
         blueCarBackWheelRotation.toFront();
@@ -290,17 +342,17 @@ public class carRaceController implements Initializable {
         blueCarTranslating = new TranslateTransition(Duration.ZERO, blueCar);
         blueCarTranslating.setFromX(0);
         blueCarTranslating.setToX(530);
-        blueCarTranslating.setInterpolator(Interpolator.LINEAR);
+        blueCarTranslating.setInterpolator(Interpolator.EASE_IN);
         
         blueCarBackWheelRotating = new RotateTransition(Duration.ZERO, blueCarBackWheelRotation);
         blueCarBackWheelRotating.setFromAngle(0);
         blueCarBackWheelRotating.setByAngle(6073.2);
-        blueCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+        blueCarBackWheelRotating.setInterpolator(Interpolator.EASE_IN);
         
         blueCarFrontWheelRotating = new RotateTransition(Duration.ZERO, blueCarFrontWheelRotation);
         blueCarFrontWheelRotating.setFromAngle(0);
         blueCarFrontWheelRotating.setByAngle(6073.2);
-        blueCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        blueCarFrontWheelRotating.setInterpolator(Interpolator.EASE_IN);
         
         redCar.getChildren().addAll(redCarFrame, redCarBackWheel, redCarFrontWheel, redCarWindows, redCarWindowEdge, redCarNumberRectangle, redCarNumber, redCarBackWheelRotation, redCarFrontWheelRotation);
         redCarBackWheelRotation.toFront();
@@ -309,17 +361,17 @@ public class carRaceController implements Initializable {
         redCarTranslating = new TranslateTransition(Duration.ZERO, redCar);
         redCarTranslating.setFromX(0);
         redCarTranslating.setToX(530);
-        redCarTranslating.setInterpolator(Interpolator.LINEAR);
+        redCarTranslating.setInterpolator(Interpolator.EASE_IN);
 
         redCarBackWheelRotating = new RotateTransition(Duration.ZERO, redCarBackWheelRotation);
         redCarBackWheelRotating.setFromAngle(0);
         redCarBackWheelRotating.setByAngle(6073.2);
-        redCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+        redCarBackWheelRotating.setInterpolator(Interpolator.EASE_IN);
 
         redCarFrontWheelRotating = new RotateTransition(Duration.ZERO, redCarFrontWheelRotation);
         redCarFrontWheelRotating.setFromAngle(0);
         redCarFrontWheelRotating.setByAngle(6073.2);
-        redCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        redCarFrontWheelRotating.setInterpolator(Interpolator.EASE_IN);
         
         greenCar.getChildren().addAll(greenCarFrame, greenCarBackWheel, greenCarFrontWheel, greenCarWindows, greenCarWindowEdge, greenCarNumberRectangle, greenCarNumber, greenCarBackWheelRotation, greenCarFrontWheelRotation);
         greenCarBackWheelRotation.toFront();
@@ -328,17 +380,17 @@ public class carRaceController implements Initializable {
         greenCarTranslating = new TranslateTransition(Duration.ZERO, greenCar);
         greenCarTranslating.setFromX(0);
         greenCarTranslating.setToX(530);
-        greenCarTranslating.setInterpolator(Interpolator.LINEAR);
+        greenCarTranslating.setInterpolator(Interpolator.EASE_IN);
 
         greenCarBackWheelRotating = new RotateTransition(Duration.ZERO, greenCarBackWheelRotation);
         greenCarBackWheelRotating.setFromAngle(0);
         greenCarBackWheelRotating.setByAngle(6073.2);
-        greenCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+        greenCarBackWheelRotating.setInterpolator(Interpolator.EASE_IN);
 
         greenCarFrontWheelRotating = new RotateTransition(Duration.ZERO, greenCarFrontWheelRotation);
         greenCarFrontWheelRotating.setFromAngle(0);
         greenCarFrontWheelRotating.setByAngle(6073.2);
-        greenCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        greenCarFrontWheelRotating.setInterpolator(Interpolator.EASE_IN);
         
         yellowCar.getChildren().addAll(yellowCarFrame, yellowCarBackWheel, yellowCarFrontWheel, yellowCarWindows, yellowCarWindowEdge, yellowCarNumberRectangle, yellowCarNumber, yellowCarBackWheelRotation, yellowCarFrontWheelRotation);
         yellowCarBackWheelRotation.toFront();
@@ -347,17 +399,17 @@ public class carRaceController implements Initializable {
         yellowCarTranslating = new TranslateTransition(Duration.ZERO, yellowCar);
         yellowCarTranslating.setFromX(0);
         yellowCarTranslating.setToX(530);
-        yellowCarTranslating.setInterpolator(Interpolator.LINEAR);
+        yellowCarTranslating.setInterpolator(Interpolator.EASE_IN);
 
         yellowCarBackWheelRotating = new RotateTransition(Duration.ZERO, yellowCarBackWheelRotation);
         yellowCarBackWheelRotating.setFromAngle(0);
         yellowCarBackWheelRotating.setByAngle(6073.2);
-        yellowCarBackWheelRotating.setInterpolator(Interpolator.LINEAR);
+        yellowCarBackWheelRotating.setInterpolator(Interpolator.EASE_IN);
 
         yellowCarFrontWheelRotating = new RotateTransition(Duration.ZERO, yellowCarFrontWheelRotation);
         yellowCarFrontWheelRotating.setFromAngle(0);
         yellowCarFrontWheelRotating.setByAngle(6073.2);
-        yellowCarFrontWheelRotating.setInterpolator(Interpolator.LINEAR);
+        yellowCarFrontWheelRotating.setInterpolator(Interpolator.EASE_IN);
          
         carsRacing = new ParallelTransition(blueCarTranslating, blueCarBackWheelRotating, blueCarFrontWheelRotating, 
                 redCarTranslating, redCarBackWheelRotating, redCarFrontWheelRotating, 
