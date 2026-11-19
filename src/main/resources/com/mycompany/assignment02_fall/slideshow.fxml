@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.assignment02_fall.slideshowController">
+   <center>
+      <ImageView fx:id="carsView" fitHeight="183.0" fitWidth="548.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@blueCar.png" />
+         </image>
+      </ImageView>
+   </center>
+   <bottom>
+      <Label fx:id="label" contentDisplay="CENTER" prefHeight="166.0" prefWidth="628.0" text="Welcome to the car race simulation! Here is a slideshow of the cars that are racing." textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="36.0" />
+         </font>
+      </Label>
+   </bottom>
+   <top>
+      <Label fx:id="carTypeLabel" layoutY="25.0" text="Car Type: BMW" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Calibri Bold" size="30.0" />
+         </font>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </Label>
+   </top>
+</BorderPane>
